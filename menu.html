@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Skodborg - Menu</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    :root {
+      --orange: #ff6600;
+      --dark: #333;
+      --light: #f4f4f4;
+      --white: #fff;
+      --gray: #ddd;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--light);
+      color: var(--dark);
+    }
+
+    /* Sticky header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background-color: var(--dark);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+    }
+    .logo {
+      color: var(--white);
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+    .navbar a {
+      color: var(--white);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+    .navbar a:hover {
+      color: var(--orange);
+    }
+
+    /* Menu navigation bar */
+    .menu-nav {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      background-color: var(--dark);
+      padding: 1rem 0;
+      margin-top: 70px; /* space below header */
+      border-bottom: 3px solid var(--orange);
+      position: sticky;
+      top: 60px;
+      z-index: 999;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+    .menu-nav a {
+      color: var(--white);
+      background-color: var(--orange);
+      padding: 0.6rem 1.2rem;
+      border-radius: 20px;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+    }
+    .menu-nav a:hover,
+    .menu-nav a:focus {
+      background-color: #cc5200;
+      outline: none;
+    }
+
+    /* Page main container */
+    main {
+      max-width: 960px;
+      margin: 2rem auto 4rem;
+      padding: 0 1rem;
+    }
+
+    /* Section styling */
+    section {
+      background-color: var(--white);
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 1.5rem 2rem;
+      margin-bottom: 2rem;
+      transition: box-shadow 0.3s ease;
+    }
+    section:hover {
+      box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+    }
+    section h2, section h3 {
+      color: var(--orange);
+      margin-bottom: 1rem;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    /* Menu table styling */
+    table.menu-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 1rem;
+      text-align: left;
+      margin-bottom: 1.5rem;
+    }
+    table.menu-table th,
+    table.menu-table td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--gray);
+    }
+    table.menu-table th {
+      background-color: var(--orange);
+      color: var(--white);
+      font-weight: 700;
+      text-align: center;
+      border-radius: 8px 8px 0 0;
+    }
+    table.menu-table tr:hover {
+      background-color: #fff4e6;
+    }
+
+    /* Info box */
+    .menu-info {
+      background-color: var(--orange);
+      color: var(--white);
+      padding: 1.5rem 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(255, 102, 0, 0.3);
+      text-align: center;
+      font-weight: 600;
+      max-width: 400px;
+      margin: 0 auto 2rem;
+    }
+    .menu-info h4 {
+      margin-bottom: 0.5rem;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 1rem 0;
+      color: var(--gray);
+      font-size: 0.9rem;
+      border-top: 1px solid var(--gray);
+      margin-top: 4rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      .navbar a {
+        margin-left: 0.8rem;
+        font-size: 0.9rem;
+      }
+      .menu-nav {
+        gap: 1rem;
+        padding: 0.75rem 0;
+      }
+      table.menu-table th,
+      table.menu-table td {
+        padding: 0.5rem 0.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Skodborg</div>
+  <nav class="navbar">
+    <a href="index.html">Home</a>
+    <a href="menu.html">Our Menu</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<nav class="menu-nav">
+  <a href="#pizza">Pizza</a>
+  <a href="#burger">Burger</a>
+  <a href="#grill">Grill Retter</a>
+  <a href="#drinks">Drikkevarer</a>
+  <a href="#pitabrod">Pita brød</a>
+  <a href="#durum">hjemmlavet Durum</a>
+  <a href="#sides">Tilbehør</a>
+</nav>
+
+<main>
+  <h2>Menu</h2>
+
+  <section id="pizza">
+    <h3>ITALIENSK PIZZA</h3>
+    <table class="menu-table">
+      <thead>
+        <tr><th>Nr.</th><th>Navn</th><th>Alm</th><th>Deep pan</th><th>Fam 50x50</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>5</td><td>Skinke, champignon</td><td>80 kr</td><td>90 kr</td><td>220 kr</td></tr>
+        <tr><td>6</td><td>Skinke, ananas</td><td>80 kr</td><td>90 kr</td><td>220 kr</td></tr>
+        <tr><td>7</td><td>Kebab, pepperoni, pebermix</td><td>80 kr</td><td>90 kr</td><td>220 kr</td></tr>
+        <tr><td>8</td><td>Oksekød, pølser, champignon, løg</td><td>80 kr</td><td>90 kr</td><td>220 kr</td></tr>
+        <tr><td>9</td><td>Skinke, pepperoni</td><td>80 kr</td><td>90 kr</td><td>220 kr</td></tr>
+        <tr><td>10</td><td>Skinke og pølser</td><td>80 kr</td><td>90 kr</td><td>220 kr</td></tr>
+        <tr><td>11</td><td>Kylling, champignon og bearnaisesauce</td><td>80 kr</td><td>90 kr</td><td>220 kr</td></tr>
+        <tr><td>12</td><td>Spaghetti og kødsauce</td><td>80 kr</td><td>90 kr</td><td>220 kr</td></tr>
+        <tr><td>13</td><td>Oksekød, løg, champignon og pebermix</td><td>80 kr</td><td>90 kr</td><td>220 kr</td></tr>
+        <tr><td>14</td><td>Tun, rejer, løg og pebermix</td><td>80 kr</td><td>90 kr</td><td>220 kr</td></tr>
+        <tr><td>15</td><td>Kebab, gorgonzola, løg og cherry tomat</td><td>80 kr</td><td>90 kr</td><td>220 kr</td></tr>
+      </tbody>
+    </table>
+
+    <h3>ITALIENSK PIZZA (2)</h3>
+    <table class="menu-table">
+      <tbody>
+        <tr><td>16</td><td>Champignon, løg, ananas, pebermix, oliven, majs</td><td>80 kr</td><td>90 kr</td><td>230 kr</td></tr>
+        <tr><td>17</td><td>Skinke, oksekød, champignon, bearnaisesauce</td><td>80 kr</td><td>90 kr</td><td>230 kr</td></tr>
+        <tr><td>18</td><td>Skinke, oksekød, bacon, løg</td><td>80 kr</td><td>90 kr</td><td>230 kr</td></tr>
+        <tr><td>19</td><td>Oksekød, bacon, gorgonzola, løg, pebermix</td><td>80 kr</td><td>90 kr</td><td>230 kr</td></tr>
+      </tbody>
+    </table>
+
+    <h3>SALAT PIZZA</h3>
+    <table class="menu-table">
+      <tbody>
+        <tr><td>20</td><td>Kebab, salat, dressing</td><td>80 kr</td><td>90 kr</td><td>230 kr</td></tr>
+        <tr><td>21</td><td>Kebab, pepperoni, løg, salat, dressing</td><td>80 kr</td><td>90 kr</td><td>230 kr</td></tr>
+        <tr><td>22</td><td>Kylling, salat, dressing</td><td>80 kr</td><td>90 kr</td><td>230 kr</td></tr>
+      </tbody>
+    </table>
+
+    <h3>LUKSUS PIZZA</h3>
+    <table class="menu-table">
+      <tbody>
+        <tr><td>23</td><td>Skinke, pepperoni, bacon, pølser, pebermix</td><td>85 kr</td><td>95 kr</td><td>240 kr</td></tr>
+        <tr><td>24</td><td>Kebab, pepperoni, pølser, bacon</td><td>85 kr</td><td>95 kr</td><td>240 kr</td></tr>
+        <tr><td>25</td><td>Pepperoni, oksekød, løg, jalapenos, bacon</td><td>85 kr</td><td>95 kr</td><td>240 kr</td></tr>
+        <tr><td>26</td><td>Mozzarella ost, skinke, pebermix</td><td>85 kr</td><td>95 kr</td><td>240 kr</td></tr>
+        <tr><td>27</td><td>Mozzarella ost, kebab, champignon, rucola</td><td>85 kr</td><td>95 kr</td><td>240 kr</td></tr>
+        <tr><td>28</td><td>Mozzarella ost, oksekød, parmesan, gorgonzola, rucola</td><td>85 kr</td><td>95 kr</td><td>240 kr</td></tr>
+      </tbody>
+    </table>
+
+    <h3>MEXICANSK PIZZA</h3>
+    <table class="menu-table">
+      <tbody>
+        <tr><td>29</td><td>Kebab, pepperoni, champignon, løg, jalapenos, pebermix</td><td>85 kr</td><td>95 kr</td><td>240 kr</td></tr>
+        <tr><td>30</td><td>Pepperoni, løg, oksekød, jalapenos, pebermix</td><td>85 kr</td><td>95 kr</td><td>240 kr</td></tr>
+        <tr><td>31</td><td>Bestem selv pizzasauce, ost og 4 ting</td><td>85 kr</td><td>95 kr</td><td>240 kr</td></tr>
+      </tbody>
+    </table>
+
+    <h3>INDBAGT PIZZA</h3>
+    <p>(Alle med pizzasauce, ekstra ost)</p>
+    <table class="menu-table">
+      <tbody>
+        <tr><td>Calzone – skinke og pølser</td><td>80 kr</td></tr>
+        <tr><td>Pinocchio – spaghetti og kødsauce</td><td>80 kr</td></tr>
+        <tr><td>Åben indbagt – kebab, løg, champignon og bearnaisesauce</td><td>80 kr</td></tr>
+      </tbody>
+    </table>
+
+    <h3>PIZZA SANDWICH</h3>
+    <table class="menu-table">
+      <tbody>
+        <tr><td>Kebab</td><td>75 kr</td></tr>
+        <tr><td>Kylling</td><td>75 kr</td></tr>
+        <tr><td>Skinke</td><td>75 kr</td></tr>
+      </tbody>
+    </table>
+
+  </section>
+
+  <section id="burger">
+    <h3>Burger</h3>
+    <table class="menu-table">
+      <thead>
+        <tr><th>Navn</th><th>Alm. Pris</th><th>Menu</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Big Burger</td><td>55 kr</td><td>90 kr</td></tr>
+        <tr><td>Cheese Burger</td><td>65 kr</td><td>100 kr</td></tr>
+        <tr><td>Bacon Cheese Burger</td><td>75 kr</td><td>110 kr</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="grill">
+  <h3>Grill Retter</h3>
+  <table class="menu-table">
+    <tbody>
+      <tr><td>Grill kylling — pommes frites, salat, ketchup og remoulade</td><td>85 kr,-</td></tr>
+      <tr><td>Kylling nuggets 10 stk, pommes frites, ketchup og remoulade</td><td>70 kr,-</td></tr>
+      <tr><td>Kebab mix: kebab, pommes frites, salat, tomat, agurk, og dressing</td><td>75 kr,-</td></tr>
+      <tr><td>Kylling mix: kylling, pommes frites, salat, tomat, agurk, og dressing</td><td>75 kr,-</td></tr>
+      <tr><td>Pølser mix: pølser, pommes frites, løg og ketchup</td><td>75 kr,-</td></tr>
+      <tr><td>Græsk salat: salat, tomat, agurk, løg, oliven, slatost og dressing</td><td>50 kr,-</td></tr>
+      <tr><td>Lille pommes frites: salat, mayonnaise, ketchup og remoulade</td><td>35 kr,-</td></tr>
+      <tr><td>Stor pommes frites: salat, mayonnaise, ketchup og remoulade</td><td>45 kr,-</td></tr>
+      <tr><td>Hvidløgsbrød (åben): ost og hvidløg</td><td>50 kr,-</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="drinks">
+  <h3>Drikkevarer</h3>
+  <table class="menu-table">
+    <tbody>
+      <tr><td>Vand</td><td>10 kr,-</td></tr>
+      <tr><td>Coca Cola, Fanta eller Faxe Kondi 0,5 ltr</td><td>20 kr,-</td></tr>
+      <tr><td>Coca Cola, Fanta eller Faxe Kondi 1,5 ltr</td><td>35 kr,-</td></tr>
+      <tr><td>Cocio 0,4 ltr</td><td>20 kr,-</td></tr>
+      <tr><td>Red Bull</td><td>20 kr,-</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="pitabrod">
+  <h3>Pita brød</h3>
+  <p>(Alle med salat, cherry tomat, agurk og dressing)</p>
+  <table class="menu-table">
+    <tbody>
+      <tr><td>Kebab</td><td>65 kr</td></tr>
+      <tr><td>Kylling</td><td>65 kr</td></tr>
+      <tr><td>Kebab, løg og slatost</td><td>70 kr</td></tr>
+    </tbody>
+  </table>
+</section>
+
+
+<section id="durum">
+  <h3>Hjemmelavet Durum</h3>
+  <p>(Alle med salat, cherry tomat, agurk og dressing)</p>
+  <table class="menu-table">
+    <tbody>
+      <tr><td>Kebab</td><td>70 kr</td></tr>
+      <tr><td>Kylling</td><td>70 kr</td></tr>
+      <tr><td>Kebab, løg, jalapenos og chili</td><td>75 kr</td></tr>
+      <tr><td>Kebab, løg og slatost</td><td>75 kr</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="sides">
+  <h3>Tilbehør</h3>
+  <table class="menu-table">
+    <tbody>
+      <tr><td>Grøntsager</td><td>Alm. Pizza 10 kr, Deep Pan 10 kr, Fam Pizza 20 kr</td></tr>
+      <tr><td>Kød & Ost</td><td>Alm. Pizza 15 kr, Deep Pan 15 kr, Fam Pizza 30 kr</td></tr>
+      <tr><td>Chili, Hvidløg, Dressing i bæger og pose</td><td>5 kr</td></tr>
+    </tbody>
+  </table>
+</section>

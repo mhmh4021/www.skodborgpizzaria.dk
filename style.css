@@ -1,0 +1,148 @@
+/* CSS Variables */
+:root {
+  --orange: #ff6600;
+  --dark: #333;
+  --light: #f4f4f4;
+  --white: #fff;
+  --gray: #ddd;
+}
+
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: var(--light);
+  color: var(--dark);
+  line-height: 1.6;
+}
+
+/* Header Styles */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--dark);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+}
+
+.logo {
+  color: var(--white);
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.navbar a {
+  color: var(--white);
+  text-decoration: none;
+  margin-left: 1.5rem;
+  font-size: 1rem;
+  transition: color 0.3s;
+}
+
+.navbar a:hover {
+  color: var(--orange);
+}
+
+/* Home Section */
+.home {
+  display: flex;
+  justify-content: flex-start; /* align content to the left */
+  align-items: center; /* vertically center the content */
+  min-height: 100vh;
+  background: url('pizzahomepage.png') no-repeat center center;
+  background-size: cover; /* Keep it as cover, but choose a higher-res image */
+  background-position: center;
+  position: relative;
+  padding-left: 5%;
+  padding-top: 6rem; /* leave space for header */
+  color: var(--white);
+}
+
+.home::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4); /* subtle overlay for readability */
+  z-index: 1;
+}
+
+.home .content {
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+  background-color: rgba(0, 0, 0, 0.6); /* optional: to enhance text clarity */
+  padding: 2rem;
+  border-radius: 12px;
+}
+
+.home .content h3 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.home .content span {
+  display: block;
+  font-size: 1.5rem;
+  color: var(--pink); /* or --orange if you've changed it */
+  margin-bottom: 1rem;
+}
+
+.home .content p {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+
+.btn {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  background-color: var(--orange);
+  color: var(--white);
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: #cc5200;
+}
+
+/* Contact Page */
+#contact {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding-top: 6rem;
+  background: url('chefburgercontact.png') no-repeat center center;
+  background-size: cover;
+  box-sizing: border-box;
+}
+
+/* Transparent contact box */
+.contact-box {
+  background-color: rgba(0, 0, 0, 0.6); /* semi-transparent dark box */
+  padding: 30px 40px;
+  border-radius: 12px;
+  color: var(--orange); /* or use #ec4d0e directly if needed */
+  text-align: center;
+  max-width: 400px;
+  font-size: 1.2rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+#contact div p {
+  margin: 0.5rem 0;
+}
