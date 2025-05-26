@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Skodborg - Our Kitchen</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --orange: #ff6600;
+      --dark: #333;
+      --light: #f4f4f4;
+      --white: #fff;
+      --gray: #ddd;
+    }
+
+    /* Reset & global */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--light);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+
+    /* Header */
+    header {
+      background-color: var(--dark);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--white);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      position: relative;
+      color: var(--white);
+    }
+
+    nav.navbar a {
+      color: var(--white);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+
+    nav.navbar a:hover {
+      color: var(--orange);
+    }
+
+    /* Fix for kitchen page header padding consistency */
+    body.kitchen header {
+      padding: 1rem 2rem;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 6rem auto 2rem auto; /* 6rem top margin to clear fixed header */
+      padding: 0 1rem;
+      position: relative;
+    }
+
+    .page-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .gallery-item {
+      text-align: center;
+    }
+
+    .gallery-item a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .label {
+      margin-top: 0.5rem;
+      font-weight: bold;
+      font-size: 1rem;
+      text-transform: uppercase;
+    }
+
+    section.category-section {
+      margin-top: 4rem;
+      display: none; /* Hidden initially */
+    }
+
+    /* Menu table styles */
+    .menu-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 2rem;
+    }
+
+    .menu-table th,
+    .menu-table td {
+      border: 1px solid var(--gray);
+      padding: 0.5rem;
+      text-align: left;
+    }
+
+    .menu-table th {
+      background-color: var(--orange);
+      color: var(--white);
+      text-transform: uppercase;
+    }
+
+    /* Back button fixed below header on left */
+    #backButton {
+      position: fixed;
+      top: 90px;  /* a bit below header */
+      left: 2rem;
+      background: none;
+      border: none;
+      color: var(--orange);
+      font-weight: bold;
+      font-size: 1rem;
+      text-transform: uppercase;
+      cursor: pointer;
+      z-index: 1001;
+      display: none; /* hidden initially */
+    }
+
+    section.category-section h2,
+    section.category-section h3 {
+      color: var(--orange);
+      margin-bottom: 1rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      background-color: var(--gray);
+      color: var(--dark);
+      font-size: 0.9rem;
+      margin-top: 4rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      .navbar a {
+        margin-left: 0.8rem;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body class="kitchen">
+
+  <!-- Header / Navbar -->
+  <header>
+    <div class="logo">Skodborg</div>
+    <nav class="navbar">
+      <a href="index.html">Home</a>
+      <a href="kitchen.html">Our Menu</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Single back button -->
+  <button id="backButton" style="top: 90px;" onclick="showMainGallery()">← Back to Main</button>
+
+  <main>
+    <section class="page-header">
+      <h1>From Our Kitchen</h1>
+    </section>
+
+    <!-- Main clickable gallery -->
+    <section class="gallery" id="mainGallery">
+      <div class="gallery-item">
+        <a href="#" data-category="pizza" class="category-link">
+          <img src="pizza.png" alt="Pizza" />
+          <div class="label">Pizza</div>
+        </a>
+      </div>
+      <div class="gallery-item">
+        <a href="#" data-category="burger" class="category-link">
+          <img src="burger.jpeg" alt="Burger" />
+          <div class="label">Burger</div>
+        </a>
+      </div>
+      <div class="gallery-item">
+        <a href="#" data-category="grill" class="category-link">
+          <img src="grill Retter.png" alt="Grill Retter" />
+          <div class="label">Grill Retter</div>
+        </a>
+      </div>
+      <div class="gallery-item">
+        <a href="#" data-category="drinks" class="category-link">
+          <img src="drinks.png" alt="Drikkevarer" />
+          <div class="label">Drikkevarer</div>
+        </a>
+      </div>
+      <div class="gallery-item">
+        <a href="#" data-category="pita" class="category-link">
+          <img src="Pita brød.png" alt="Pita brød" />
+          <div class="label">Pita Brød</div>
+        </a>
+      </div>
+      <div class="gallery-item">
+        <a href="#" data-category="durum" class="category-link">
+          <img src="hjemmlavet Durum.png" alt="Durum" />
+          <div class="label">Hjemmlavet Durum</div>
+        </a>
+      </div>
+      <div class="gallery-item">
+        <a href="#" data-category="sides" class="category-link">
+          <img src="sides (fries).png" alt="Tilbehør" />
+          <div class="label">Tilbehør</div>
+        </a>
+      </div>
+    </section>
+
+    <!-- Category sections -->
+
+    <!-- Updated pizza section with full menu tables -->
+    <!-- Pizza Section -->
+<section id="pizza" class="category-section">
+  <h2>PIZZA MENU</h2>
+
+  <!-- Separate Margarita Section -->
+  <h3>Margarita</h3>
+  <table class="menu-table">
+    <thead>
+      <tr><th>Nr.</th><th>Navn</th><th>Alm</th><th>Deep pan</th><th>Fam 50x50</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Margarita</td><td>65 kr</td><td>75 kr</td><td>195 kr</td></tr>
+    </tbody>
+  </table>
+
+  <!-- Section for Skinke, Pepperoni, Oksekød -->
+  <h3>Classic Pizzas</h3>
+  <table class="menu-table">
+    <thead>
+      <tr><th>Nr.</th><th>Navn</th><th>Alm</th><th>Deep pan</th><th>Fam </th></tr>
+    </thead>
+    <tbody>
+      <tr><td>2</td><td>Skinke</td><td>70 kr</td><td>80 kr</td><td>205 kr</td></tr>
+      <tr><td>3</td><td>Pepperoni</td><td>70 kr</td><td>80 kr</td><td>205 kr</td></tr>
+      <tr><td>4</td><td>Oksekød</td><td>70 kr</td><td>80 kr</td><td>205 kr</td></tr>
+    </tbody>
+  </table>
+
+  <h3>ITALIENSK PIZZA</h3>
+  <table class="menu-table">
+    <thead>
+      <tr><th>Nr.</th><th>Navn</th><th>Alm</th><th>Deep pan</th><th>Fam 50x50</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>5</td><td>Skinke, champignon</td><td>80 kr</td><td>90 kr</td><td>220 kr</td></tr>
+      <tr><td>6</td><td>Skinke, ananas</td><td>80 kr</td><td>90 kr</td><td>220 kr</td></tr>
+      <tr><td>7</td><td>Kebab, pepperoni, pebermix</td><td>80 kr</td><td>90 kr</td><td>220 kr</td></tr>
+      <tr><td>8</td><td>Oksekød, pølser, champignon, løg</td><td>80 kr</td><td>90 kr</td><td>220 kr</td></tr>
+      <tr><td>9</td><td>Skinke, pepperoni</td><td>80 kr</td><td>90 kr</td><td>220 kr</td></tr>
+      <tr><td>10</td><td>Skinke og pølser</td><td>80 kr</td><td>90 kr</td><td>220 kr</td></tr>
+      <tr><td>11</td><td>Kylling, champignon og bearnaisesauce</td><td>80 kr</td><td>90 kr</td><td>220 kr</td></tr>
+      <tr><td>12</td><td>Spaghetti og kødsauce</td><td>80 kr</td><td>90 kr</td><td>220 kr</td></tr>
+      <tr><td>13</td><td>Oksekød, løg, champignon og pebermix</td><td>80 kr</td><td>90 kr</td><td>220 kr</td></tr>
+      <tr><td>14</td><td>Tun, rejer, løg og pebermix</td><td>80 kr</td><td>90 kr</td><td>220 kr</td></tr>
+      <tr><td>15</td><td>Kebab, gorgonzola, løg og cherry tomat</td><td>80 kr</td><td>90 kr</td><td>220 kr</td></tr>
+    </tbody>
+  </table>
+
+  <h3>ITALIENSK PIZZA (2)</h3>
+  <table class="menu-table">
+    <thead>
+      <tr><th>Nr.</th><th>Navn</th><th>Alm</th><th>Deep pan</th><th>Fam 50x50</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>16</td><td>Champignon, løg, ananas, pebermix, oliven, majs</td><td>80 kr</td><td>90 kr</td><td>230 kr</td></tr>
+      <tr><td>17</td><td>Skinke, oksekød, champignon, bearnaisesauce</td><td>80 kr</td><td>90 kr</td><td>230 kr</td></tr>
+      <tr><td>18</td><td>Skinke, oksekød, bacon, løg</td><td>80 kr</td><td>90 kr</td><td>230 kr</td></tr>
+      <tr><td>19</td><td>Oksekød, bacon, gorgonzola, løg, pebermix</td><td>80 kr</td><td>90 kr</td><td>230 kr</td></tr>
+    </tbody>
+  </table>
+
+  <h3>SALAT PIZZA</h3>
+  <table class="menu-table">
+    <thead>
+      <tr><th>Nr.</th><th>Navn</th><th>Alm</th><th>Deep pan</th><th>Fam 50x50</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>20</td><td>Kebab, salat, dressing</td><td>80 kr</td><td>90 kr</td><td>230 kr</td></tr>
+      <tr><td>21</td><td>Kebab, pepperoni, løg, salat, dressing</td><td>80 kr</td><td>90 kr</td><td>230 kr</td></tr>
+      <tr><td>22</td><td>Kylling, salat, dressing</td><td>80 kr</td><td>90 kr</td><td>230 kr</td></tr>
+    </tbody>
+  </table>
+
+  <h3>LUKSUS PIZZA</h3>
+  <table class="menu-table">
+    <thead>
+      <tr><th>Nr.</th><th>Navn</th><th>Alm</th><th>Deep pan</th><th>Fam 50x50</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>23</td><td>Skinke, pepperoni, bacon, pølser, pebermix</td><td>85 kr</td><td>95 kr</td><td>240 kr</td></tr>
+      <tr><td>24</td><td>Kebab, pepperoni, pølser, bacon</td><td>85 kr</td><td>95 kr</td><td>240 kr</td></tr>
+      <tr><td>25</td><td>Pepperoni, oksekød, løg, jalapenos, bacon</td><td>85 kr</td><td>95 kr</td><td>240 kr</td></tr>
+      <tr><td>26</td><td>Mozzarella ost, skinke, pebermix</td><td>85 kr</td><td>95 kr</td><td>240 kr</td></tr>
+      <tr><td>27</td><td>Mozzarella ost, kebab, champignon, rucola</td><td>85 kr</td><td>95 kr</td><td>240 kr</td></tr>
+      <tr><td>28</td><td>Mozzarella ost, oksekød, parmesan, gorgonzola, rucola</td><td>85 kr</td><td>95 kr</td><td>240 kr</td></tr>
+    </tbody>
+  </table>
+
+  <h3>MEXICANSK PIZZA</h3>
+  <table class="menu-table">
+    <thead>
+      <tr><th>Nr.</th><th>Navn</th><th>Alm</th><th>Deep pan</th><th>Fam 50x50</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>29</td><td>Kebab, pepperoni, champignon, løg, jalapenos, pebermix</td><td>85 kr</td><td>95 kr</td><td>240 kr</td></tr>
+      <tr><td>30</td><td>Pepperoni, løg, oksekød, jalapenos, pebermix</td><td>85 kr</td><td>95 kr</td><td>240 kr</td></tr>
+      <tr><td>31</td><td>Bestem selv pizzasauce, ost og 4 ting</td><td>85 kr</td><td>95 kr</td><td>240 kr</td></tr>
+    </tbody>
+  </table>
+</section>
+
+
+
+    <!-- Placeholder content for other categories -->
+   <section id="burger" class="category-section">
+  <h2>BURGER MENU</h2>
+
+  <p>Alle menuer er med salat, tomat, agurk, burgerdressing</p>
+  <p>Alle menuer er med pommes frites og sodavand</p>
+
+  <table class="menu-table">
+    <thead>
+      <tr><th>Nr.</th><th>Navn</th><th>Alm. Pris</th><th>Menu</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>62</td><td>Big burger</td><td>55 kr,-</td><td>90 kr,-</td></tr>
+      <tr><td>64</td><td>Cheese burger</td><td>65 kr,-</td><td>100 kr,-</td></tr>
+      <tr><td>65</td><td>Bacon cheese burger</td><td>75 kr,-</td><td>110 kr,-</td></tr>
+    </tbody>
+  </table>
+</section>
+
+
+ <section id="grill" class="category-section">
+  <h2>Grill Retter</h2>
+
+  <table class="menu-table">
+    <thead>
+      <tr><th>Nr.</th><th>Navn</th><th>Beskrivelse</th><th>Pris</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>53</td>
+        <td>1/2 Grill kylling</td>
+        <td>pommes frites, salat, ketchup og remoulade</td>
+        <td>85 kr,-</td>
+      </tr>
+      <tr>
+        <td>54</td>
+        <td>Kylling nuggets 10 stk</td>
+        <td>pommes frites, ketchup og remoulade</td>
+        <td>70 kr,-</td>
+      </tr>
+      <tr>
+        <td>55</td>
+        <td>Kebab mix</td>
+        <td>kebab, pommes frites, salat, tomat, agurk, og dressing</td>
+        <td>75 kr,-</td>
+      </tr>
+      <tr>
+        <td>56</td>
+        <td>Kylling mix</td>
+        <td>kylling, pommes frites, salat, tomat, agurk, og dressing</td>
+        <td>75 kr,-</td>
+      </tr>
+      <tr>
+        <td>57</td>
+        <td>Pølser mix</td>
+        <td>pølser, pommes frites, løg og ketchup</td>
+        <td>75 kr,-</td>
+      </tr>
+      <tr>
+        <td>58</td>
+        <td>Græsk salat</td>
+        <td>salat, tomat, agurk, løg, oliven, slatost og dressing</td>
+        <td>50 kr,-</td>
+      </tr>
+      <tr>
+        <td>59</td>
+        <td>Lille pommes frites</td>
+        <td>salat, mayonnaise, ketchup og remoulade</td>
+        <td>35 kr,-</td>
+      </tr>
+      <tr>
+        <td>60</td>
+        <td>Stor pommes frites</td>
+        <td>salat, mayonnaise, ketchup og remoulade</td>
+        <td>45 kr,-</td>
+      </tr>
+      <tr>
+        <td>61</td>
+        <td>Hvidløgsbrød (åben)</td>
+        <td>ost og hvidløg</td>
+        <td>50 kr,-</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+
+    <section id="drinks" class="category-section">
+      <h2>Drikkevarer</h2>
+      <table class="menu-table">
+    <thead>
+      <tr><th>Navn</th><th>Pris</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Vand</td><td>10 kr,-</td></tr>
+      <tr><td>Coca Cola, Fanta eller Faxe Kondi 0,5 ltr</td><td>20 kr,-</td></tr>
+      <tr><td>Coca Cola, Fanta eller Faxe Kondi 1,5 ltr</td><td>35 kr,-</td></tr>
+      <tr><td>Cocio 0,4 ltr</td><td>20 kr,-</td></tr>
+      <tr><td>Red Bull</td><td>20 kr,-</td></tr>
+    </tbody>
+  </table>
+    </section>
+
+    <section id="pita" class="category-section">
+      <h2>Pita Brød</h2>
+       <p>(Alle med salat, cherry tomat, agurk og dressing)</p>
+
+  <table class="menu-table">
+    <thead>
+      <tr><th>Nr.</th><th>Navn</th><th>Pris</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>41</td><td>Kebab</td><td>65 kr,-</td></tr>
+      <tr><td>42</td><td>Kylling</td><td>65 kr,-</td></tr>
+      <tr><td>43</td><td>Kebab, løg og slatost</td><td>70 kr,-</td></tr>
+    </tbody>
+  </table>
+    </section>
+
+    <section id="durum" class="category-section">
+      <h2>Hjemmlavet Durum</h2>
+      <p>(Alle med salat, cherry tomat, agurk og dressing)</p>
+
+  <table class="menu-table">
+    <thead>
+      <tr><th>Nr.</th><th>Navn</th><th>Pris</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>44</td><td>Kebab</td><td>70 kr,-</td></tr>
+      <tr><td>45</td><td>Kylling</td><td>70 kr,-</td></tr>
+      <tr><td>46</td><td>Kebab, løg, jalapenos og chili</td><td>75 kr,-</td></tr>
+      <tr><td>47</td><td>Kebab, løg og slatost</td><td>75 kr,-</td></tr>
+    </tbody>
+  </table>
+    </section>
+
+    <section id="sides" class="category-section">
+      <h2>Tilbehør</h2>
+    <table class="menu-table">
+    <thead>
+      <tr><th>Navn</th><th>Pris</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Grøntsager: Alm. Pizza</td><td>10 kr,-</td></tr>
+      <tr><td>Grøntsager: Deep Pan</td><td>10 kr,-</td></tr>
+      <tr><td>Grøntsager: Fam Pizza</td><td>20 kr,-</td></tr>
+      <tr><td>Kød & Ost: Alm. Pizza</td><td>15 kr,-</td></tr>
+      <tr><td>Kød & Ost: Deep Pan</td><td>15 kr,-</td></tr>
+      <tr><td>Kød & Ost: Fam Pizza</td><td>30 kr,-</td></tr>
+      <tr><td>Chili, Hvidløg, Dressing i bæger og pose</td><td>5 kr,-</td></tr>
+    </tbody>
+  </table>
+    </section>
+  </main>
+
+  
+  <script>
+    const categoryLinks = document.querySelectorAll('.category-link');
+    const mainGallery = document.getElementById('mainGallery');
+    const backButton = document.getElementById('backButton');
+    const categorySections = document.querySelectorAll('section.category-section');
+
+    // Show category section when clicked on gallery
+    categoryLinks.forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const category = link.getAttribute('data-category');
+
+        mainGallery.style.display = 'none';
+        backButton.style.display = 'inline-block';
+
+        categorySections.forEach(section => {
+          if (section.id === category) {
+            section.style.display = 'block';
+          } else {
+            section.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Back button resets view to main gallery
+    function showMainGallery() {
+      mainGallery.style.display = 'grid';
+      backButton.style.display = 'none';
+      categorySections.forEach(section => (section.style.display = 'none'));
+    }
+  </script>
+</body>
+</html>
