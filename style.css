@@ -56,15 +56,15 @@ header {
 /* Home Section */
 .home {
   display: flex;
-  justify-content: flex-start; /* align content to the left */
-  align-items: center; /* vertically center the content */
+  justify-content: flex-start;
+  align-items: center;
   min-height: 100vh;
   background: url('pizzahomepage.png') no-repeat center center;
-  background-size: cover; /* Keep it as cover, but choose a higher-res image */
+  background-size: cover;
   background-position: center;
   position: relative;
   padding-left: 5%;
-  padding-top: 6rem; /* leave space for header */
+  padding-top: 6rem;
   color: var(--white);
 }
 
@@ -72,7 +72,7 @@ header {
   content: '';
   position: absolute;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.4); /* subtle overlay for readability */
+  background-color: rgba(0, 0, 0, 0.4);
   z-index: 1;
 }
 
@@ -80,7 +80,7 @@ header {
   position: relative;
   z-index: 2;
   max-width: 600px;
-  background-color: rgba(0, 0, 0, 0.6); /* optional: to enhance text clarity */
+  background-color: rgba(0, 0, 0, 0.6);
   padding: 2rem;
   border-radius: 12px;
 }
@@ -93,7 +93,7 @@ header {
 .home .content span {
   display: block;
   font-size: 1.5rem;
-  color: var(--pink); /* or --orange if you've changed it */
+  color: var(--orange);
   margin-bottom: 1rem;
 }
 
@@ -101,7 +101,6 @@ header {
   font-size: 1.1rem;
   margin-bottom: 1.5rem;
 }
-
 
 .btn {
   display: inline-block;
@@ -131,12 +130,11 @@ header {
   box-sizing: border-box;
 }
 
-/* Transparent contact box */
 .contact-box {
-  background-color: rgba(0, 0, 0, 0.6); /* semi-transparent dark box */
+  background-color: rgba(0, 0, 0, 0.6);
   padding: 30px 40px;
   border-radius: 12px;
-  color: var(--orange); /* or use #ec4d0e directly if needed */
+  color: var(--orange);
   text-align: center;
   max-width: 400px;
   font-size: 1.2rem;
@@ -145,4 +143,37 @@ header {
 
 #contact div p {
   margin: 0.5rem 0;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  header {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .navbar a {
+    margin-left: 0.8rem;
+    font-size: 0.9rem;
+  }
+}
+
+#backButton {
+  position: fixed;
+  top: 90px;  /* pushed down a bit */
+  left: 2rem;
+  background: none;
+  border: none;
+  color: var(--orange);
+  font-weight: bold;
+  font-size: 1rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  z-index: 1001;
+  display: none; /* hide initially */
+}
+
+/* NEW: Ensure Our Kitchen page header padding matches other pages */
+/* Add class="kitchen" to your <body> on kitchen.html */
+.kitchen header {
+  padding: 1rem 2rem;
 }
