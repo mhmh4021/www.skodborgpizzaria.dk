@@ -46,10 +46,16 @@ header {
   text-decoration: none;
   margin-left: 1.5rem;
   font-size: 1rem;
+  font-weight: bold;
   transition: color 0.3s;
 }
 
 .navbar a:hover {
+  color: var(--orange);
+}
+
+/* Active link */
+.navbar a.active {
   color: var(--orange);
 }
 
@@ -145,21 +151,10 @@ header {
   margin: 0.5rem 0;
 }
 
-/* Responsive */
-@media (max-width: 600px) {
-  header {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-  .navbar a {
-    margin-left: 0.8rem;
-    font-size: 0.9rem;
-  }
-}
-
+/* Back Button */
 #backButton {
   position: fixed;
-  top: 90px;  /* pushed down a bit */
+  top: 90px;
   left: 2rem;
   background: none;
   border: none;
@@ -169,11 +164,10 @@ header {
   text-transform: uppercase;
   cursor: pointer;
   z-index: 1001;
-  display: none; /* hide initially */
+  display: none;
 }
 
-/* NEW: Ensure Our Kitchen page header padding matches other pages */
-/* Add class="kitchen" to your <body> on kitchen.html */
+/* Kitchen page specific header fix */
 .kitchen header {
   padding: 1rem 2rem;
 }
