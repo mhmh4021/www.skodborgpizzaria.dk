@@ -177,23 +177,20 @@ header {
 
 
 #backButton {
-  position: absolute; /* or fixed if you want it to stay on screen when scrolling */
+  position: absolute; /* keep absolute on desktop */
   top: 90px;
   left: 10px;
   font-size: 1.2rem;
-  /* other styles if needed */
 }
 
 @media (max-width: 600px) {
   #backButton {
-    position: relative;   /* Let it flow in document order */
-    top: auto;            /* Reset the top offset */
-    left: auto;           /* Reset the left offset */
+    position: relative;  /* let it flow in the layout */
+    top: auto;           /* reset top */
+    left: auto;          /* reset left */
     font-size: 1rem;
-    margin-top: 20px;
+    margin-bottom: 10px; /* space between button and Pizza Menu */
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+    width: max-content;  /* shrink to content width */
   }
 }
-
