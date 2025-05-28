@@ -153,17 +153,17 @@ header {
 
 /* Back Button */
 #backButton {
-  position: fixed;
-  top: 90px;
-  left: 2rem;
+  position: fixed !important;
+  top: 20px !important;
+  left: 20px !important;
   background: none;
   border: none;
   color: var(--orange);
   font-weight: bold;
-  font-size: 1rem;
+  font-size: 1rem !important;
   text-transform: uppercase;
   cursor: pointer;
-  z-index: 1001;
+  z-index: 1001 !important;
   display: none;
 }
 
@@ -173,23 +173,96 @@ header {
 }
 
 
+@media (max-width: 600px) {
+  #backButton {
+    font-size: 0.9rem !important;
+    top: 10px !important;
+    left: 10px !important;
+  }
+}
+/* Category Section Styles */
 
 
+
+
+
+
+
+
+/* 1. Initially hide all category sections and back button */
+.category-section, 
+#backButton {
+  display: none;
+}
+
+/* 2. Show main gallery by default */
+#mainGallery {
+  display: grid;
+}
+
+/* 3. When a category is targeted (clicked): */
+#pizza:target,
+#burger:target,
+#grill:target,
+#drinks:target,
+#pita:target,
+#durum:target,
+#sides:target {
+  display: block !important;
+}
+
+/* 4. Hide main gallery when any category is shown */
+#pizza:target ~ main #mainGallery,
+#burger:target ~ main #mainGallery,
+#grill:target ~ main #mainGallery,
+#drinks:target ~ main #mainGallery,
+#pita:target ~ main #mainGallery,
+#durum:target ~ main #mainGallery,
+#sides:target ~ main #mainGallery {
+  display: none;
+}
+
+/* 5. Show back button when any category is shown */
+#pizza:target ~ #backButton,
+#burger:target ~ #backButton,
+#grill:target ~ #backButton,
+#drinks:target ~ #backButton,
+#pita:target ~ #backButton,
+#durum:target ~ #backButton,
+#sides:target ~ #backButton {
+  display: block !important;
+  position: fixed;
+  top: 70px;
+  left: 0;
+  width: 100%;
+  background: var(--dark);
+  color: var(--orange);
+  padding: 10px 20px;
+  z-index: 1001;
+  border-bottom: 1px solid var(--orange);
+}
 
 #backButton {
-  position: relative !important;
-  top: auto !important;
-  left: 0 !important;
-  margin-bottom: 20px !important;
-  font-size: 1rem !important;
-  display: block !important;
+  position: relative;
+  top: auto;
+  background-color: transparent;
+  padding: 10px;
+  z-index: auto;
+  font-size: 1rem;
+  width: auto;
 }
 
 
 @media (max-width: 600px) {
   #backButton {
-    /* Same as above but can tweak font-size or margin if needed */
-    font-size: 1rem;
-    margin-bottom: 20px;
+    position: fixed !important; /* Keeps it fixed on small screens */
+    top: 10px !important; /* Distance from top */
+    left: 20px !important; /* Left position */
+    font-size: 1rem; /* Font size */
+    z-index: 1001 !important; /* Makes sure it's above other elements */
+  }
+
+  body {
+    padding-top: 40px; /* Add padding to the top of the body to make room for the fixed button */
   }
 }
