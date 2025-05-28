@@ -177,20 +177,18 @@ header {
 
 
 #backButton {
-  position: absolute; /* keep absolute on desktop */
-  top: 40px;
-  left: 10px;
-  font-size: 1.2rem;
+  position: relative; /* so it flows naturally in the page */
+  margin-bottom: 15px; /* space between button and what follows */
+  font-size: 1rem;
+  left: 0;
+  top: auto;
+  display: inline-block;
 }
 
 @media (max-width: 600px) {
   #backButton {
-    position: relative;  /* let it flow in the layout */
-    top: auto;           /* reset top */
-    left: auto;          /* reset left */
+    /* Same as above but can tweak font-size or margin if needed */
     font-size: 1rem;
-    margin-bottom: 10px; /* space between button and Pizza Menu */
-    display: block;
-    width: max-content;  /* shrink to content width */
+    margin-bottom: 20px;
   }
 }
