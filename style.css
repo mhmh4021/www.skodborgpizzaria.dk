@@ -178,7 +178,7 @@ header {
 
 #backButton {
   position: absolute; /* keep absolute on desktop */
-  top: 90px;
+  top: 70px;
   left: 10px;
   font-size: 1.2rem;
 }
