@@ -151,20 +151,26 @@ header {
   margin: 0.5rem 0;
 }
 
-/* Back Button */
+ /* Back Button */
 #backButton {
   position: fixed !important;
-  top: 20px !important;
-  left: 20px !important;
-  background: none;
+  top: 140px !important;
+  left: 1px !important;
+  background-color: var(--orange);
+  color: var(--white);
+  padding: 0.1rem 1rem;
   border: none;
-  color: var(--orange);
+  border-radius: 25px;
   font-weight: bold;
   font-size: 1rem !important;
   text-transform: uppercase;
   cursor: pointer;
   z-index: 1001 !important;
   display: none;
+  transition: background-color 0.3s;
+}
+#backButton:hover {
+  background-color: #cc5200;
 }
 
 /* Kitchen page specific header fix */
